@@ -1,0 +1,83 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+body {
+}
+.logo_img {
+    height: 11rem;
+    width: 11rem;
+    border-radius: 100%;
+    background-image: url("../../public/images/money_sugar.jpg");
+    background-size: cover;
+}
+
+.custom_col {
+    background-color: rgba(#fff, 1);
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.248));
+}
+
+body.antialiased {
+    background-color: #efefef;
+}
+
+.card__image {
+    width: 18rem;
+    margin: 5px;
+}
+
+.custom__text {
+    color: #ea4848;
+    text-transform: capitalize;
+}
+
+.custom__btn {
+    background-color: #ea4848;
+    color: #fff;
+    border-radius: 50px;
+
+    &:hover {
+        color: #fff;
+        background-color: #ea4848;
+    }
+}
+
+.custom__navbar {
+    background-color: rgba(#ea4848, 1);
+    padding: 0;
+    box-sizing: content-box;
+    &__link {
+        padding: 5px;
+
+        &:hover {
+            background-color: #fff;
+            .custom__navbar__link--a {
+                transition: all 0.4s;
+                &:hover {
+                    color: #ea4848;
+                }
+
+                &.active {
+                }
+            }
+        }
+    }
+}
+
+.custom__message {
+    &__col {
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        background-color: black;
+    }
+    &__container {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
