@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Wishlist;
+use App\Models\UserWishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -23,23 +23,23 @@ class WishlistController extends Controller
             return response()->json($validated->errors()->toJson(), 400);
         }
 
-        $wishlist = Wishlist::create(array_merge($validated->validated(), ["user_id" => auth()->user()->id]));
+        $wishlist = UserWishlist::create(array_merge($validated->validated(), ["user_id" => auth()->user()->id]));
 
         return response()->json([
             'message' => 'New book added to your wishlist!',
-            'wishlist' => $wishlist], 201);
+            'wishlist' => $wishlist ], 201);
 
     }
 
     function showWishlist() {
-        $showWishlist = Wishlist::all()->where("user_id", "=", auth()->user()->id);
+        $showWishlist = UserWishlist::all()->where("user_id", "=", auth()->user()->id);
         return json_encode($showWishlist);
     }
 
     public function removeBooks(Request $request)
     {
 
-        $removeWishlist = Wishlist::find($request->id);
+        $removeWishlist = UserWishlist::find($request->id);
 
 
         if ($removeWishlist->user_id == Auth::user()->id) {

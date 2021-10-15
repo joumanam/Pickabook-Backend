@@ -20,11 +20,13 @@ class ShowAddBookController extends Controller
             'title' => 'required|string|between:1,100',
             'author' => 'required|string|between:1,100',
             'image_url' => 'required|string|between:1,200',
-            'genre' => 'required|string|between:1,100',
+            'category' => 'required|string|between:1,100',
             'language' => 'required|string|between:1,100',
             'condition' => 'required|string|between:1,100',
             'price' => 'required|string|between:1,100',
             'rating' => 'required|string|between:1,100',
+            'status' => 'required|string|between:1,100'
+
 
         ]);
 
@@ -45,13 +47,13 @@ class ShowAddBookController extends Controller
         return json_encode($show_books);
     }
 
-    public function removeBooks(Request $request)
+    public function removeBooks($id)
     {
 
-        $remove_book = AddBook::find($request->id);
+        $remove_book = AddBook::find($id);
 
-        
-        if ($remove_book->user_id == Auth::user()->id) {
+
+        if ($remove_book->user_id == auth()->user()->id) {
             $remove_book->delete();
 
             return response()->json([
@@ -65,5 +67,30 @@ class ShowAddBookController extends Controller
             ], 401);
         }
     }
+
+
+    public function tradeBooks($id)
+    {
+        $trade_book = AddBook::find($id);
+
+        // $trade_book = AddBook::where("user_id", auth()->user()->id)
+        // ->where("id", $book_id)
+
+        if ($trade_book) {
+            if ($trade_book->status == "Idle") {
+                $trade_book->update(["status" => "For Trade"]);
+
+            return response()->json([
+                'message' => 'Book successfully put up for trade!',
+                'book' => $trade_book,
+                ], 201);
+        }
+    }
+        else {
+        return response()->json([
+            'message' => "Please check if the book is available for trade first. (Status must be 'Idle')",
+        ], 401);
+
+        }}
 
 }

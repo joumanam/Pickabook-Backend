@@ -68,29 +68,29 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function images()
-    {
-        return $this->hasMany(UserPicture::class)->where("is_profile_picture", 0);
-    }
+    // public function images()
+    // {
+    //     return $this->hasOne(UserPicture::class)->where("is_profile_picture", 0);
+    // }
 
-    public function previewImages()
-    {
-        return $this->hasMany(UserPicture::class)->where("is_profile_picture", 0)->limit(2);
-    }
+    // public function previewImages()
+    // {
+    //     return $this->hasMany(UserPicture::class)->where("is_profile_picture", 0)->limit(2);
+    // }
 
-    public function profilePicture()
-    {
-        return $this->hasOne(UserPicture::class, "user_id", "id")->where("is_profile_picture", 1);
-    }
+    // public function profilePicture()
+    // {
+    //     return $this->hasOne(UserPicture::class, "user_id", "id")->where("is_profile_picture", 1);
+    // }
 
     public function newNotifications()
     {
         return $this->hasMany(UserNotification::class)->where("is_read", 0);
     }
 
-    public function hobbies()
+    public function wishlist()
     {
-        return $this->hasMany(UserHobby::class);
+        return $this->hasMany(Wishlist::class);
     }
 
     public function messagesSent()
@@ -98,14 +98,19 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(UserMessage::class, 'sender_id', 'id');
     }
 
+    // public function books()
+    // {
+    //     return $this->hasMany(AddBook::class, 'user_id', 'id');
+    // }
+
     public function messagesReceived()
     {
         return $this->hasMany(UserMessage::class, 'receiver_id', 'id');
     }
 
-    public function interests()
+    public function trades()
     {
-        return $this->hasMany(UserInterest::class);
+        return $this->hasManyThrough(trades::class, AddBook::class);
     }
 
     // Both for getting user connections, Checks user1_id & user2_id :: use with(["connectionsOne","connectionsTwo"]);

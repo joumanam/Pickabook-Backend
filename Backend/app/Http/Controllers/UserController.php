@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function getUserConnections()
-    {
-        return response()->json(array("connections" => auth()->user()->connections()));
-    }
-
+   
     public function getUserInterestedIn()
     {
 

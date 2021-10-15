@@ -25,11 +25,11 @@ class ConnectionController extends Controller
             // Create the connection if both of them haven't previously matched other
             $match = UserConnection::create(["user1_id" => auth()->user()->id, "user2_id" => $id]);
         } else {
-            $match = "Connected Togather!";
+            $match = "Connected Together!";
         }
 
         return response()->json([
-            'message' => 'Mathced!!!',
+            'message' => 'Matched!!!',
             'body' => $match,
         ], 201);
     }

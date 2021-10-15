@@ -4,7 +4,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ConnectionController;
-use App\Http\Controllers\HobbiesController;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PictureController;
@@ -49,6 +48,8 @@ Route::group([
     Route::post('/addbooks', [ShowAddBookController::class, "addBooks"]);
     Route::get('/showbooks', [ShowAddBookController::class, "showBooks"]);
     Route::delete("/deletebooks/{id}", [ShowAddBookController::class, "removeBooks"]);
+    Route::put("/tradebooks/{id}", [ShowAddBookController::class, "tradeBooks"]);
+
 
     // Wishlist APIS
     Route::post('/addwishlist', [WishlistController::class, "addWishlist"]);
