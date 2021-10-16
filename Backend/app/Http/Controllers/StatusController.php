@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AddBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class StatusController extends Controller
 {
@@ -21,19 +22,22 @@ class StatusController extends Controller
         if ($trade_book) {
             if ($trade_book->status == "Idle") {
                 $trade_book->update(["status" => "For Trade"]);
+                $trade_book->update(["price" => Null]);   // since price is only relevant for the buy/sell
+
 
             return response()->json([
                 'message' => 'Book successfully put up for trade!',
                 'book' => $trade_book,
                 ], 201);
         }
-    }
+
         else {
         return response()->json([
             'message' => "Please check if the book is available for trade first. (Status must be 'Idle')",
         ], 401);
 
         }}
+    }
 
 // Put your book up for sale
 
@@ -45,18 +49,20 @@ class StatusController extends Controller
             if ($sell_book->status == "Idle") {
                 $sell_book->update(["status" => "For Sale"]);
 
+
             return response()->json([
                 'message' => 'Book successfully put up for sale!',
                 'book' => $sell_book,
                 ], 201);
         }
-    }
+
         else {
         return response()->json([
             'message' => "Please check if the book is available for selling first. (Status must be 'Idle')",
         ], 401);
 
         }}
+    }
 
 // Put your book up for auction
 
@@ -67,19 +73,22 @@ class StatusController extends Controller
             if ($auction_book) {
                 if ($auction_book->status == "Idle") {
                     $auction_book->update(["status" => "For Auction"]);
+                    $auction_book->update(["price" => Null]);   // since price is only relevant for the buy/sell
+
 
                 return response()->json([
                     'message' => 'Book successfully put up for auction!',
                     'book' => $auction_book,
                     ], 201);
             }
-        }
+
             else {
             return response()->json([
                 'message' => "Please check if the book is available for selling first. (Status must be 'Idle')",
             ], 401);
 
             }}
+        }
 
 // Updating Price when book is for sale
 
@@ -105,5 +114,31 @@ public function updateprice(Request $request)
             'message' => "Price cannot be updated. Please check if it's up for sale first.",
         ], 401);
     }
+}
+
+// Return to Idle status
+
+public function idle($id)
+{
+    $idle = AddBook::find($id);
+
+    if ($idle) {
+        if ($idle->status != "Idle") {
+            $idle->update(["status" => "Idle"]);
+            $idle->update(["price" => Null]);   // since price is only relevant for the buy/sell
+
+
+        return response()->json([
+            'message' => 'Book successfully returned to Idle status!',
+            'book' => $idle,
+            ], 201);
+    }
+
+    else {
+    return response()->json([
+        'message' => "Book already in Idle status!",
+    ], 401);
+
+    }}
 }
 }

@@ -15,7 +15,7 @@ class Trade extends Model
 
     public function book()
     {
-        return $this->hasOne(AddBook::class, 'book_id');
+        return $this->hasOne(AddBook::class, 'book_id', 'id');
     }
 
 }

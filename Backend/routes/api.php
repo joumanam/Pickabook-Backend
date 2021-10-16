@@ -61,6 +61,7 @@ Route::group([
     Route::put("/tradebooks/{id}", [StatusController::class, "trade"]);
     Route::put("/sellbooks/{id}", [StatusController::class, "sale"]);
     Route::put("/auctionbooks/{id}", [StatusController::class, "auction"]);
+    Route::put("/idle/{id}", [StatusController::class, "idle"]);
     Route::post("/updateprice/{id}", [StatusController::class, "updateprice"]);
 
     // Wishlist APIS
