@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ShowAddBookController extends Controller
 {
-    function homepage() {
-        return view("welcome");
-    }
 
     public function addBooks(Request $request)
     {

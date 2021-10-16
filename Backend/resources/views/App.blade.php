@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SugarF.</title>
+<div class = "form-group">
 
-    <link rel="stylesheet" href="./css/app.css">
-</head>
+<select name="status" id="status" class="form-control input-lg dynamic" data-dependent="state">
+<option value="">Status</option>
+</select>
 
-<body class="antialiased">
-    <div id="App"></div>
-    <script src="{{ mix('js/app.js') }}"></script>
-</body>
+<select name="language" id="language" class="form-control input-lg dynamic" data-dependent="state">
+<option value="">Language</option>
+</select>
+
+<select name="title" id="title" class="form-control input-lg dynamic" data-dependent="state">
+<option value="">Title</option>
+</select>
+
+<button type="submit">Submit</button>
+
+</div>
 
 </html>

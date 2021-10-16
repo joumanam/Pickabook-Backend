@@ -10,6 +10,7 @@ use App\Http\Controllers\PictureController;
 use App\Http\Controllers\ShowAddBookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,12 @@ Route::group([
     Route::post('/addwishlist', [WishlistController::class, "addWishlist"]);
     Route::get('/showwishlist', [WishlistController::class, "showWishlist"]);
     Route::delete('/deletewishlist/{id}', [WishlistController::class, "removeWishlist"]);
+
+    // Search and filter APIS
+    Route::post('/searcht/{string}', [SearchController::class, "title"]);
+    Route::post('/searcha/{string}', [SearchController::class, "author"]);
+    Route::post('/searchl/{string}', [SearchController::class, "language"]);
+    Route::post('/searchs/{string}', [SearchController::class, "status"]);
 
 
 
