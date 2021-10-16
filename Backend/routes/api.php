@@ -11,6 +11,7 @@ use App\Http\Controllers\ShowAddBookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
+
+// Authentication APIS
+
 Route::group([
     'prefix' => 'auth',
 ], function () {
@@ -45,19 +49,28 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api',
 ], function () {
+
     // Buy and Sell APIS
+
     Route::post('/addbooks', [ShowAddBookController::class, "addBooks"]);
     Route::get('/showbooks', [ShowAddBookController::class, "showBooks"]);
     Route::delete("/deletebooks/{id}", [ShowAddBookController::class, "removeBooks"]);
-    Route::put("/tradebooks/{id}", [ShowAddBookController::class, "tradeBooks"]);
 
+    // Changing Status APIS
+
+    Route::put("/tradebooks/{id}", [StatusController::class, "trade"]);
+    Route::put("/sellbooks/{id}", [StatusController::class, "sale"]);
+    Route::put("/auctionbooks/{id}", [StatusController::class, "auction"]);
+    Route::post("/updateprice/{id}", [StatusController::class, "updateprice"]);
 
     // Wishlist APIS
+
     Route::post('/addwishlist', [WishlistController::class, "addWishlist"]);
     Route::get('/showwishlist', [WishlistController::class, "showWishlist"]);
     Route::delete('/deletewishlist/{id}', [WishlistController::class, "removeWishlist"]);
 
     // Search and filter APIS
+
     Route::post('/searcht/{string}', [SearchController::class, "title"]);
     Route::post('/searcha/{string}', [SearchController::class, "author"]);
     Route::post('/searchl/{string}', [SearchController::class, "language"]);
@@ -65,17 +78,14 @@ Route::group([
 
 
 
-    Route::get("/connections", [UserController::class, "getUserConnections"]);
-    Route::get("/{user}", [UserController::class, "show"]);
+    Route::get("/show/{user}", [UserController::class, "show"]);
     Route::post("/edit", [UserController::class, "update"]);
     Route::delete("/delete/account", [UserController::class, "destroy"]);
-    Route::get("/", [UserController::class, "getUserInterestedIn"]);
 
 
     Route::group([
         'prefix' => 'connect',
     ], function () {
-        Route::get("/match/{id}", [ConnectionController::class, "store"]);
         Route::delete("/delete/{userconnection}", [ConnectionController::class, "destroy"]);
     });
 
@@ -84,13 +94,6 @@ Route::group([
     ], function () {
         Route::post("/add", [InterestsController::class, "addInterest"]);
         Route::delete("/delete/{id}", [InterestsController::class, "removeInterest"]);
-    });
-
-    Route::group([
-        // 'prefix' => 'buysell',
-        'middleware' => 'auth:api',
-    ], function () {
-
     });
 
     Route::group([

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AddBook;
-use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -15,9 +14,11 @@ class SearchController extends Controller
     {
         $result = AddBook::where("title", 'LIKE', '%' . $string . '%')->get();
         if(count($result)){
-            return $result;
+            return json_encode($result);
         } else {
-            return array('No records found');
+            return response()->json([
+                'message' => "No records found.",
+            ], 401);
         }
     }
 
@@ -28,9 +29,11 @@ class SearchController extends Controller
     {
         $result = AddBook::where("author", 'LIKE', '%' . $string . '%')->get();
         if(count($result)){
-            return $result;
+            return json_encode($result);
         } else {
-            return array('No records found');
+            return response()->json([
+                'message' => "No records found.",
+            ], 401);
         }
     }
 
@@ -41,9 +44,11 @@ class SearchController extends Controller
     {
         $result = AddBook::where("language", 'LIKE', '%' . $string . '%')->get();
         if(count($result)){
-            return $result;
+            return json_encode($result);
         } else {
-            return array('No records found');
+            return response()->json([
+                'message' => "No records found.",
+            ], 401);
         }
     }
 
@@ -53,9 +58,11 @@ class SearchController extends Controller
     {
         $result = AddBook::where("status", 'LIKE', '%' . $string . '%')->get();
         if(count($result)){
-            return $result;
+            return json_encode($result);
         } else {
-            return array('No records found');
+            return response()->json([
+                'message' => "No records found.",
+            ], 401);
         }
     }
 }
