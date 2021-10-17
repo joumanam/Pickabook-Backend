@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-    public function home() {
-        return view("App");
+
+    function homepage() {
+        return view("welcome");
     }
 
     public function show(User $user)
