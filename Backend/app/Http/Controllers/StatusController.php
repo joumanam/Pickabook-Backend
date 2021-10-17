@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AddBook;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\UserTrade;
@@ -140,6 +141,16 @@ public function idle($id)
     $idle = AddBook::find($id);
 
     if ($idle) {
+        if ($idle->status == "For Trade") {
+           UserTrade::where("book_id", $id)->delete();
+           $idle->update(["status" => "Idle"]);
+
+        return response()->json([
+        'message' => 'Book successfully returned to Idle status!',
+        'book' => $idle,
+        ], 201);
+        }
+
         if ($idle->status != "Idle") {
             $idle->update(["status" => "Idle"]);
             $idle->update(["price" => Null]);   // since price is only relevant for the buy/sell
