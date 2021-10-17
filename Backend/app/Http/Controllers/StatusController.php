@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AddBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use phpDocumentor\Reflection\Types\Nullable;
+use App\Models\UserTrade;
+
 
 class StatusController extends Controller
 {
@@ -19,11 +20,22 @@ class StatusController extends Controller
         // $trade_book = AddBook::where("user_id", auth()->user()->id)
         // ->where("id", $book_id)
 
+        // First step: Update Book Status
+
         if ($trade_book) {
             if ($trade_book->status == "Idle") {
                 $trade_book->update(["status" => "For Trade"]);
                 $trade_book->update(["price" => Null]);   // since price is only relevant for the buy/sell
 
+                // Second step: Any new book for trade should be added to the trades table
+                $books = AddBook::get()->where("status", "For Trade");
+                foreach ($books as $key => $value) {
+
+                    UserTrade::updateOrCreate([         // instead of ::create to avoid duplicate data
+                    'user_id' => $value->user_id,
+                    'book_id'=> $value->id
+            ]);
+        }
 
             return response()->json([
                 'message' => 'Book successfully put up for trade!',
@@ -36,7 +48,12 @@ class StatusController extends Controller
             'message' => "Please check if the book is available for trade first. (Status must be 'Idle')",
         ], 401);
 
-        }}
+        }
+    }
+        // Second Step: All books for trade should be added to the trades table
+
+
+
     }
 
 // Put your book up for sale

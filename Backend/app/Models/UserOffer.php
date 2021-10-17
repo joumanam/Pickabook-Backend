@@ -4,14 +4,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserWishlist extends Model
+class UserOffer extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_wishlists';
+    protected $table = 'offers';
     protected $fillable = [
         'user_id',
-        'title',
-        'author',
+        'trade_id',
     ];
+
+
 }

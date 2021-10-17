@@ -17,7 +17,7 @@ class CreateTradesTable extends Migration
         Schema::create('trades', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained("users")->onDelete("cascade");
-            $table->foreignId('book_id')->constrained("add_books")->onDelete("cascade");
+            $table->foreignId('book_id')->constrained("add_books")->onDelete("cascade")->uniqid;
             $table->timestamps();
             $table->softDeletes();
         });

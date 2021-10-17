@@ -4,18 +4,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Trade extends Model
+class UserTrade extends Model
 {
     use HasFactory;
 
+    protected $table = 'trades';
     protected $fillable = [
         'user_id',
         'book_id',
     ];
 
-    public function book()
+    // public function book()
+    // {
+    //     return $this->hasOne(UserOffer::class, 'book_id', 'id');
+    // }
+
+    public function offers()
     {
-        return $this->hasOne(AddBook::class, 'book_id', 'id');
+        return $this->hasMany(UserOffer::class, 'trade_id', 'id');
     }
 
 }

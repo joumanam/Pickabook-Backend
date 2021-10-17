@@ -6,6 +6,7 @@ use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ConnectionController;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\ShowAddBookController;
 use App\Http\Controllers\UserController;
@@ -77,6 +78,8 @@ Route::group([
     Route::post('/searchl/{string}', [SearchController::class, "language"]);
     Route::post('/searchs/{string}', [SearchController::class, "status"]);
 
+   // Offers APIS
+   Route::post('/offer/{book_id}', [OfferController::class, "offer"]);
 
 
     Route::get("/show/{user}", [UserController::class, "show"]);
