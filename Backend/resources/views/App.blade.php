@@ -1,7 +1,7 @@
 <html>
+Hello
 
-
-<div class = "form-group">
+{{-- <div class = "form-group">
 
 <select name="status" id="status" class="form-control input-lg dynamic" data-dependent="state">
 <option value="">Status</option>
@@ -17,6 +17,6 @@
 
 <button type="submit">Submit</button>
 
-</div>
+</div> --}}
 
 </html>

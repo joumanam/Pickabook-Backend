@@ -54,7 +54,7 @@ Route::group([
     // Buy and Sell APIS
 
     Route::post('/addbooks', [ShowAddBookController::class, "addBooks"]);
-    Route::get('/showbooks', [ShowAddBookController::class, "showBooks"]);
+    Route::get('/showbooks/{id}', [ShowAddBookController::class, "showBooks"]);
     Route::delete("/deletebooks/{id}", [ShowAddBookController::class, "removeBooks"]);
 
     // Changing Status APIS

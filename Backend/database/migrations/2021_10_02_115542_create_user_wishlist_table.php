@@ -15,7 +15,7 @@ class CreateUserWishlistTable extends Migration
 
     public function up()
     {
-        Schema::create('user_wishlist', function (Blueprint $table) {
+        Schema::create('user_wishlists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained("users")->onDelete("cascade");
             $table->string('title');
@@ -34,6 +34,6 @@ class CreateUserWishlistTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('wishlist');
+        Schema::dropIfExists('user_wishlists');
     }
 }

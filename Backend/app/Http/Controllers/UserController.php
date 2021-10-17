@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
+    public function home() {
+        return view("App");
+    }
 
     public function show(User $user)
 {
@@ -17,7 +20,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request)
-    
+
     {
         $id = auth()->user()->id;
         $validator = Validator::make($request->all(), [

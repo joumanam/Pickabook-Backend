@@ -39,8 +39,10 @@ class ShowAddBookController extends Controller
 
     }
 
-    function showBooks() {
-        $show_books = AddBook::all()->where("user_id", "=", auth()->user()->id);
+    function showBooks(Request $request) {
+        // $show_books = AddBook::all()->where("user_id", "=", auth()->user()->id);
+        $show_books = AddBook::all()->where("user_id", "=", $request->id);
+
         return json_encode($show_books);
     }
 

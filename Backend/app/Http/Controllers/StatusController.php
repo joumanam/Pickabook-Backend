@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AddBook;
 use App\Models\User;
+use App\Models\UserOfferItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\UserTrade;
@@ -139,6 +140,8 @@ public function updateprice(Request $request)
 public function idle($id)
 {
     $idle = AddBook::find($id);
+    // Changing status from "For Trade" to "Idle" means I should remove everything related to this trade post
+    // (deleting related offers, adjusting book status from "for trade" and "used in offer" to "Ilde")
 
     if ($idle) {
         if ($idle->status == "For Trade") {
@@ -150,6 +153,17 @@ public function idle($id)
         'book' => $idle,
         ], 201);
         }
+        // Removing a book from an offer
+        
+        if ($idle->status == "Used in offer") {
+            UserOfferItems::where("book_id", $id)->delete();
+            $idle->update(["status" => "Idle"]);
+
+         return response()->json([
+         'message' => 'Book successfully returned to Idle status!',
+         'book' => $idle,
+         ], 201);
+         }
 
         if ($idle->status != "Idle") {
             $idle->update(["status" => "Idle"]);
