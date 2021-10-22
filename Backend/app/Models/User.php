@@ -28,15 +28,6 @@ class User extends Authenticatable implements JWTSubject
         'last_name',
         'email',
         'password',
-        'gender',
-        'interested_in',
-        'dob',
-        'height',
-        'weight',
-        'nationality',
-        'city',
-        'country',
-        'bio',
         'role',
     ];
 
@@ -109,7 +100,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(UserInfo::class, "user_id", "id");
     }
 
-    
+
 
     public function trades()
     {

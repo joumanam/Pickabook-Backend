@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 // Authentication APIS
 
+
 Route::group([
     'prefix' => 'auth',
 ], function () {
