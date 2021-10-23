@@ -18,17 +18,40 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $user = new User();
-        $user->first_name = "admin";
-        $user->last_name = "admin";
-        $user->email = "admin@gmail.com";
+        $user->first_name = "Joumana";
+        $user->last_name = "Moussa";
+        $user->email = "joum@se.io";
         $user->password = bcrypt("password");
-        $user->role = "Admin";
+        $user->role = "admin";
         $user->save();
 
-        // User::factory(10)->has(UserConnection::factory(5), "connectionsOne")
-        //     ->has(UserConnection::factory(5), "connectionsTwo")
-        //     ->hasHobbies(10)
-        //     ->hasInterests(10)
-        //     ->create();
+
+        $user = new User();
+        $user->first_name = "Charbel";
+        $user->last_name = "Daoud";
+        $user->email = "char@se.io";
+        $user->password = bcrypt("password");
+        $user->role = "admin";
+        $user->save();
+
+
+        $user = new User();
+        $user->first_name = "Yvona";
+        $user->last_name = "Nehme";
+        $user->email = "yvee@se.io";
+        $user->password = bcrypt("password");
+        $user->role = "user";
+        $user->save();
+
+
+        $user = new User();
+        $user->first_name = "Roxy";
+        $user->last_name = "cat";
+        $user->email = "roxy@se.io";
+        $user->password = bcrypt("password");
+        $user->role = "user";
+        $user->save();
+
+
     }
 }

@@ -18,36 +18,127 @@ class AddBooksSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $user = new AddBook();
-        // $user->user_id = rand(1,10);
-        // $user->title = "Murder on the Orient Express";
-        // $user->author = "Agatha Christie";
-        // $user->category = "Thriller, mystery";
-        // $user->language = "English";
-        // $user->price = null;
-        // $user->condition = "good";
-        // $user->image_url = "image_url";
-        // $user->rating = "4 stars";
+        $user->user_id = 1;
+        $user->title = "Murder on the Orient Express";
+        $user->author = "Agatha Christie";
+        $user->category = "Thriller, mystery";
+        $user->language = "English";
+        $user->status = "Idle";
+        $user->price = null;
+        $user->condition = "good";
+        $user->image_url = "image_url";
+        $user->rating = "4 stars";
+        $user->save();
 
         $user = new AddBook();
-        $user->user_id = rand(1,10);
+        $user->user_id = 2;
         $user->title = "Death on the Nile";
         $user->author = "Agatha Christie";
         $user->category = "Thriller, mystery";
         $user->language = "English";
         $user->condition = "very good";
+        $user->status = "For Trade";
         $user->image_url = "image_url";
-        $user->price = "130,000 LL";
+        $user->price = null;
         $user->rating = "4 stars";
+        $user->save();
 
+        $user = new AddBook();
+        $user->user_id = 3;
+        $user->title = "1984";
+        $user->author = "Georges Orwell";
+        $user->category = "Dystopian";
+        $user->language = "English";
+        $user->condition = "very good";
+        $user->image_url = "image_url";
+        $user->status = "For Sale";
+        $user->price = "110,000 LL";
+        $user->rating = "4 stars";
+        $user->save();
 
+        $user = new AddBook();
+        $user->user_id = 1;
+        $user->title = "Black Holes: The Reith Lectures";
+        $user->author = "Stephen Hawking";
+        $user->category = "Science, Physics, Non-fiction";
+        $user->language = "English";
+        $user->condition = "New";
+        $user->image_url = "image_url";
+        $user->status = "For Sale";
+        $user->price = "120,000 LL";
+        $user->rating = "4 stars";
         $user->save();
 
 
+        $user = new AddBook();
+        $user->user_id = 2;
+        $user->title = "Discourse On Method And The Meditations";
+        $user->author = "Descartes";
+        $user->category = "Philosophy";
+        $user->language = "English";
+        $user->condition = "New";
+        $user->image_url = "image_url";
+        $user->status = "For Auction";
+        $user->price = null;
+        $user->rating = "3.8 stars";
+        $user->save();
 
-        // User::factory(10)->has(UserConnection::factory(5), "connectionsOne")
-        //     ->has(UserConnection::factory(5), "connectionsTwo")
-        //     ->hasHobbies(10)
-        //     ->hasInterests(10)
-        //     ->create();
+
+        $user = new AddBook();
+        $user->user_id = 3;
+        $user->title = "L'étranger";
+        $user->author = "Albert Camus";
+        $user->category = "Existential Fiction, Novel";
+        $user->language = "French";
+        $user->condition = "used, good condition";
+        $user->image_url = "image_url";
+        $user->status = "For Trade";
+        $user->price = null;
+        $user->rating = "4 stars";
+        $user->save();
+
+
+        $user = new AddBook();
+        $user->user_id = 4;
+        $user->title = "Caligula";
+        $user->author = "Albert Camus";
+        $user->category = "Theatre, Literature";
+        $user->language = "French";
+        $user->condition = "New";
+        $user->image_url = "image_url";
+        $user->status = "For Trade";
+        $user->price = null;
+        $user->rating = "4 stars";
+        $user->save();
+
+
+        $user = new AddBook();
+        $user->user_id = 1;
+        $user->title = "You Don’t Know JS Yet: Get Started";
+        $user->author = "Kyle Simpson";
+        $user->category = "Tech, Educational";
+        $user->language = "English";
+        $user->condition = "used";
+        $user->image_url = "image_url";
+        $user->status = "For Sale";
+        $user->price = "100,000 LL";
+        $user->rating = "3 stars";
+        $user->save();
+
+
+        $user = new AddBook();
+        $user->user_id = 4;
+        $user->title = "Eloquent Ruby";
+        $user->author = "Russ Olsen ";
+        $user->category = "Tech, Educational";
+        $user->language = "English";
+        $user->condition = "New";
+        $user->image_url = "image_url";
+        $user->status = "Idle";
+        $user->price = null;
+        $user->rating = "4 stars";
+        $user->save();
+
+
     }
 }
