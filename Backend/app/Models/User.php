@@ -7,6 +7,7 @@ use App\Models\UserInterest;
 use App\Models\UserNotification;
 use App\Models\UserInfo;
 use App\Models\UserPicture;
+use App\Models\UserWishlist;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -77,7 +78,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function wishlist()
     {
-        return $this->hasMany(Wishlist::class);
+        return $this->hasMany(UserWishlist::class, 'user_id', 'id');
     }
 
     public function messagesSent()

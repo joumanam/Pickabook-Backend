@@ -4,15 +4,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserOfferItems extends Model
+class AddEvent extends Model
 {
     use HasFactory;
 
-    protected $table = 'offer_items';
     protected $fillable = [
-        'offer_id',
-        'book_id',
+        'user_id',
+        'name',
+        'location',
+        'date',
+        'time',
+        'comments',
+        'image_url',
+        'coordinates',
     ];
-
-
 }

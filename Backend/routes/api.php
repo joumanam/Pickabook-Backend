@@ -12,6 +12,7 @@ use App\Http\Controllers\ShowAddBookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ShowAddEventController;
 use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,8 @@ Route::group([
     Route::post('/addbooks', [ShowAddBookController::class, "addBooks"]);
     Route::get('/showbooks/{id}', [ShowAddBookController::class, "showBooks"]);
     Route::delete("/deletebooks/{id}", [ShowAddBookController::class, "removeBooks"]);
+    Route::get('/showallbooks/', [ShowAddBookController::class, "showAllBooks"]);
+
 
     // Changing Status APIS
 
@@ -81,6 +84,12 @@ Route::group([
 
    // Offers APIS
    Route::post('/offer/{book_id}', [OfferController::class, "offer"]);
+
+    // Event APIS
+   Route::post('/addevent', [ShowAddEventController::class, "addEvent"]);
+   Route::get('/showevent/{id}', [ShowAddEventController::class, "showEvent"]);
+   Route::delete("/deleteevent/{id}", [ShowAddEventController::class, "removeEvent"]);
+   Route::get('/showallevents/', [ShowAddEventController::class, "showAllEvents"]);
 
 
     Route::get("/show/{user}", [UserController::class, "show"]);

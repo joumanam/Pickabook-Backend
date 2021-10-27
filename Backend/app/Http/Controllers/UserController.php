@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function show(User $user)
 {
-        return response()->json($user->load(["location", "books"]));
+        return response()->json($user->load(["location", "books", "wishlist"]));
     }
 
     public function update(Request $request)

@@ -46,6 +46,12 @@ class ShowAddBookController extends Controller
         return json_encode($show_books);
     }
 
+    function showAllBooks() {
+
+        $show_all_books = AddBook::all();
+        return json_encode($show_all_books);
+    }
+
     public function removeBooks($id)
     {
 
