@@ -6,6 +6,7 @@ use App\Models\AddBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 
 class ShowAddBookController extends Controller
@@ -98,4 +99,9 @@ class ShowAddBookController extends Controller
 
         }}
 
+    public function getUser(Request $request)
+    {
+        $userProfile = User::all()->where("id", "=", $request->id);
+        return $userProfile;
+    }
 }

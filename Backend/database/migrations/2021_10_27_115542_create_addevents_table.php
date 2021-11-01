@@ -19,7 +19,7 @@ class CreateAddEventsTable extends Migration
             $table->foreignId('user_id')->constrained("users")->onDelete("cascade");
             $table->string('name');
             $table->string('location');
-            $table->date('date');
+            $table->string('date');
             $table->string('time');
             $table->string('comments');
             $table->string('image_url');

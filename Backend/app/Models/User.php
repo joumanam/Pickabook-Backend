@@ -102,7 +102,6 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-
     public function trades()
     {
         return $this->hasManyThrough(trades::class, AddBook::class);

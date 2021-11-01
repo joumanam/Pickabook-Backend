@@ -77,10 +77,10 @@ Route::group([
 
     // Search and filter APIS
 
-    Route::post('/searcht/{string}', [SearchController::class, "title"]);
-    Route::post('/searcha/{string}', [SearchController::class, "author"]);
-    Route::post('/searchl/{string}', [SearchController::class, "language"]);
-    Route::post('/searchs/{string}', [SearchController::class, "status"]);
+    Route::get('/searcht/{string}', [SearchController::class, "title"]);
+    Route::get('/searcha/{string}', [SearchController::class, "author"]);
+    Route::get('/searchl/{string}', [SearchController::class, "language"]);
+    Route::get('/searchs/{string}', [SearchController::class, "status"]);
 
    // Offers APIS
    Route::post('/offer/{book_id}', [OfferController::class, "offer"]);
@@ -91,6 +91,8 @@ Route::group([
    Route::delete("/deleteevent/{id}", [ShowAddEventController::class, "removeEvent"]);
    Route::get('/showallevents/', [ShowAddEventController::class, "showAllEvents"]);
 
+
+    Route::get("/getUser/{id}", [ShowAddBookController::class, "getUser"]);
 
     Route::get("/show/{user}", [UserController::class, "show"]);
     Route::post("/edit", [UserController::class, "update"]);
