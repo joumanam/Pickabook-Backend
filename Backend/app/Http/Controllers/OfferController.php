@@ -16,11 +16,11 @@ class OfferController extends Controller
 
     public function offer(Request $request)
     {
+    // Book_id in url, trade_id in request
 
         $offered_book = AddBook::find($request->book_id);
 
 
-        // First step: Update Book Status to "Used in offer"
 
         if ($offered_book) {
             if ($offered_book->status == "Idle") {
@@ -59,6 +59,18 @@ class OfferController extends Controller
         ], 401);
     }
 
+}
+// this only returns offer id
 
+public function showOffers(Request $request) {
+    $show_offers = UserOffer::get()->where("trade_id", "=", $request->trade_id);
+    return response()->json($show_offers->load(["offerItems"]));
+}
 
-}}
+function showTrades(Request $request) {
+    $show_trades = UserTrade::all()->where("book_id", "=", $request->book_id);
+
+    return json_encode($show_trades);
+}
+
+}

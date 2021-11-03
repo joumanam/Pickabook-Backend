@@ -25,8 +25,7 @@ class UserController extends Controller
     {
         $id = auth()->user()->id;
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'full_name' => 'required',
 
         ]);
 

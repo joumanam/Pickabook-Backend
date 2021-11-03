@@ -15,4 +15,9 @@ class UserOffer extends Model
     ];
 
 
+    public function offerItems()
+    {
+        return $this->hasMany(UserOfferItems::class, 'offer_id', 'id');
+    }
+
 }

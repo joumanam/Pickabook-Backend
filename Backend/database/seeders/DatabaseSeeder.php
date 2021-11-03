@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $user = new User();
-        $user->first_name = "Joumana";
-        $user->last_name = "Moussa";
+        $user->full_name = "Joumana Moussa";
+        $user->image_url = "test";
         $user->email = "joum@se.io";
         $user->password = bcrypt("password");
         $user->role = "admin";
@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
 
 
         $user = new User();
-        $user->first_name = "Charbel";
-        $user->last_name = "Daoud";
+        $user->full_name = "Charbel Daoud";
+        $user->image_url = "test";
         $user->email = "char@se.io";
         $user->password = bcrypt("password");
         $user->role = "admin";
@@ -36,8 +36,8 @@ class DatabaseSeeder extends Seeder
 
 
         $user = new User();
-        $user->first_name = "Yvona";
-        $user->last_name = "Nehme";
+        $user->full_name = "Yvona Nehme";
+        $user->image_url = "test";
         $user->email = "yvee@se.io";
         $user->password = bcrypt("password");
         $user->role = "user";
@@ -45,8 +45,8 @@ class DatabaseSeeder extends Seeder
 
 
         $user = new User();
-        $user->first_name = "Roxy";
-        $user->last_name = "cat";
+        $user->full_name = "Roxy Cat";
+        $user->image_url = "test";
         $user->email = "roxy@se.io";
         $user->password = bcrypt("password");
         $user->role = "user";
@@ -104,7 +104,6 @@ class DatabaseSeeder extends Seeder
         $user->rating = "4 stars";
         $user->save();
 
-
         $user = new AddBook();
         $user->user_id = 2;
         $user->title = "Discourse On Method And The Meditations";
@@ -132,7 +131,6 @@ class DatabaseSeeder extends Seeder
         $user->rating = "4 stars";
         $user->save();
 
-
         $user = new AddBook();
         $user->user_id = 4;
         $user->title = "Caligula";
@@ -145,7 +143,6 @@ class DatabaseSeeder extends Seeder
         $user->price = null;
         $user->rating = "4 stars";
         $user->save();
-
 
         $user = new AddBook();
         $user->user_id = 1;

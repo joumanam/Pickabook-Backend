@@ -82,15 +82,17 @@ Route::group([
     Route::get('/searchl/{string}', [SearchController::class, "language"]);
     Route::get('/searchs/{string}', [SearchController::class, "status"]);
 
-   // Offers APIS
+   // Trades and Offers APIS
    Route::post('/offer/{book_id}', [OfferController::class, "offer"]);
+   Route::get('/showoffers/{trade_id}', [OfferController::class, "showOffers"]);
+   Route::get('/showtrades/{book_id}', [OfferController::class, "showTrades"]);
+
 
     // Event APIS
    Route::post('/addevent', [ShowAddEventController::class, "addEvent"]);
    Route::get('/showevent/{id}', [ShowAddEventController::class, "showEvent"]);
    Route::delete("/deleteevent/{id}", [ShowAddEventController::class, "removeEvent"]);
    Route::get('/showallevents/', [ShowAddEventController::class, "showAllEvents"]);
-
 
     Route::get("/getUser/{id}", [ShowAddBookController::class, "getUser"]);
 
