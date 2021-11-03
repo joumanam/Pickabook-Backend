@@ -59,6 +59,8 @@ Route::group([
     Route::get('/showbooks/{id}', [ShowAddBookController::class, "showBooks"]);
     Route::delete("/deletebooks/{id}", [ShowAddBookController::class, "removeBooks"]);
     Route::get('/showallbooks/', [ShowAddBookController::class, "showAllBooks"]);
+    Route::get("/getbook/{id}", [ShowAddBookController::class, "getBook"]);
+
 
 
     // Changing Status APIS

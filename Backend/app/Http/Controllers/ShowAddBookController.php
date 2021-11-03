@@ -101,7 +101,13 @@ class ShowAddBookController extends Controller
 
     public function getUser(Request $request)
     {
-        $userProfile = User::all()->where("id", "=", $request->id);
+        $userProfile = User::first()->where("id", "=", $request->id);
         return $userProfile;
+    }
+
+    public function getBook(Request $request)
+    {
+        $bookById = AddBook::first()->where("id", "=", $request->id);
+        return $bookById;
     }
 }
