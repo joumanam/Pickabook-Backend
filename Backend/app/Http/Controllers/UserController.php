@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-
-    function homepage() {
-        return view("welcome");
-    }
-
     public function show(User $user)
 {
         return response()->json($user->load(["location", "books", "wishlist"]));
