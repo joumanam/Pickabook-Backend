@@ -17,7 +17,7 @@ class ShowAddBookController extends Controller
         $validated = Validator::make($request->all(), [
             'title' => 'required|string|between:1,100',
             'author' => 'required|string|between:1,100',
-            'image_url' => 'required|string|between:1,200',
+            'image_url' => 'required|string|between:1,300',
             'category' => 'required|string|between:1,100',
             'language' => 'required|string|between:1,100',
             'condition' => 'required|string|between:1,100',

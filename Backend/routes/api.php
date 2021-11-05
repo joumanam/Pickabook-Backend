@@ -74,7 +74,7 @@ Route::group([
     // Wishlist APIS
 
     Route::post('/addwishlist', [WishlistController::class, "addWishlist"]);
-    Route::get('/showwishlist', [WishlistController::class, "showWishlist"]);
+    Route::get('/showwishlist/{id}', [WishlistController::class, "showWishlist"]);
     Route::delete('/deletewishlist/{id}', [WishlistController::class, "removeWishlist"]);
 
     // Search and filter APIS
@@ -100,6 +100,7 @@ Route::group([
 
     Route::get("/show/{user}", [UserController::class, "show"]);
     Route::post("/edit", [UserController::class, "update"]);
+    Route::get("/showallusers", [UserController::class, "showAllUsers"]);
     Route::delete("/delete/account", [UserController::class, "destroy"]);
 
 

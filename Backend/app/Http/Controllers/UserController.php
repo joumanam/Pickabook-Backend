@@ -15,6 +15,12 @@ class UserController extends Controller
         return response()->json($user->load(["location", "books", "wishlist"]));
     }
 
+   public function showAllUsers() {
+
+        $show_all_users = User::all();
+        return json_encode($show_all_users);
+    }
+
     public function update(Request $request)
 
     {

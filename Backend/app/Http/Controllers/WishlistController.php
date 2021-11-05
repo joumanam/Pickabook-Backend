@@ -31,8 +31,8 @@ class WishlistController extends Controller
 
     }
 
-    function showWishlist() {
-        $showWishlist = UserWishlist::all()->where("user_id", "=", auth()->user()->id);
+    function showWishlist(Request $request) {
+        $showWishlist = UserWishlist::all()->where("user_id", "=", $request->id);
         return json_encode($showWishlist);
     }
 
