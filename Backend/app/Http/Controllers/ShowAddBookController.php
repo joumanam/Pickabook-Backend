@@ -25,7 +25,6 @@ class ShowAddBookController extends Controller
             'rating' => 'required|string|between:1,100',
             'status' => 'required|string|between:1,100'
 
-
         ]);
 
         if ($validated->fails()) {
@@ -41,24 +40,18 @@ class ShowAddBookController extends Controller
     }
 
     function showBooks(Request $request) {
-        // $show_books = AddBook::all()->where("user_id", "=", auth()->user()->id);
         $show_books = AddBook::all()->where("user_id", "=", $request->id);
-
         return json_encode($show_books);
     }
 
     function showAllBooks() {
-
         $show_all_books = AddBook::all();
         return json_encode($show_all_books);
     }
 
     public function removeBooks($id)
     {
-
         $remove_book = AddBook::find($id);
-
-
         if ($remove_book->user_id == auth()->user()->id) {
             $remove_book->delete();
 
@@ -74,14 +67,12 @@ class ShowAddBookController extends Controller
         }
     }
 
-
     public function tradeBooks($id)
     {
         $trade_book = AddBook::find($id);
 
         // $trade_book = AddBook::where("user_id", auth()->user()->id)
         // ->where("id", $book_id)
-
         if ($trade_book) {
             if ($trade_book->status == "Idle") {
                 $trade_book->update(["status" => "For Trade"]);

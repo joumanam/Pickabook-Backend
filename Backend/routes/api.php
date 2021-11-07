@@ -61,8 +61,6 @@ Route::group([
     Route::get('/showallbooks/', [ShowAddBookController::class, "showAllBooks"]);
     Route::get("/getbook/{id}", [ShowAddBookController::class, "getBook"]);
 
-
-
     // Changing Status APIS
 
     Route::put("/tradebooks/{id}", [StatusController::class, "trade"]);
